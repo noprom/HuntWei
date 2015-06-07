@@ -52,5 +52,33 @@ public class LoginApiCache {
         }
     }
 
+    public void logout(){
+        mAccessToken = null;
+        mExpireDate = Long.MIN_VALUE;
+        mPrefs.edit().remove("access_token").remove("expires_in").commit();
+    }
 
+    public void cache(){
+        mPrefs.edit().putString("access_token", mAccessToken)
+                .putLong("expires_in", mExpireDate)
+                .putString("app_id", mAppId)
+                .putString("app_secret", mAppSecret)
+                .commit();
+    }
+
+    public String getAccessToken() {
+        return mAccessToken;
+    }
+
+    public long getExpireDate() {
+        return mExpireDate;
+    }
+
+    public String getAppId() {
+        return mAppId;
+    }
+
+    public String getAppSecret() {
+        return mAppSecret;
+    }
 }
