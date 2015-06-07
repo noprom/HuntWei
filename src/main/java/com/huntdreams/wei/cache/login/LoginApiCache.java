@@ -2,7 +2,11 @@ package com.huntdreams.wei.cache.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
+import com.huntdreams.wei.api.login.LoginApi;
+
+import static com.huntdreams.wei.BuildConfig.DEBUG;
 /**
  * 登陆缓存
  *
@@ -26,6 +30,26 @@ public class LoginApiCache {
         mExpireDate = mPrefs.getLong("expires_in", Long.MIN_VALUE);
         mAppId = mPrefs.getString("app_id", null);
         mAppSecret = mPrefs.getString("app_secret", null);
+    }
+
+    public void login(String appId, String appSecret, String username,String password){
+        if(mAccessToken == null || mExpireDate == Long.MIN_VALUE){
+            if(DEBUG){
+                Log.d(TAG, "access token not initialized, running login function");
+            }
+
+            String result[] = LoginApi.login(appId, appSecret, username, password);
+            if(result != null){
+                if(DEBUG){
+                    Log.d(TAG, "result got, loading to cache");
+                }
+                mAccessToken = result[0];
+                mExpireDate = System.currentTimeMillis() + Long.valueOf(result[1]);
+                mAppId = appId;
+                mAppSecret = appSecret;
+            }
+
+        }
     }
 
 

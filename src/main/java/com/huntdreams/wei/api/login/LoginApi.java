@@ -31,7 +31,7 @@ public class LoginApi extends BaseApi{
 
         try{
             JSONObject json = requestWithoutAccessToken(Constants.OAUTH2_ACCESS_TOKEN, params, HTTP_POST);
-            return new String[]{json.optString("access_token"), json.optString("expires_in")}
+            return new String[]{json.optString("access_token"), json.optString("expires_in")};
         } catch (JSONException e) {
             if(DEBUG){
                 Log.d(TAG, "login error:" + e.getClass().getSimpleName());
