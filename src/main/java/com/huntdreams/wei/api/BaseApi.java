@@ -1,6 +1,8 @@
 package com.huntdreams.wei.api;
 
-import com.sina.weibo.sdk.auth.WeiboParameters;
+
+import com.sina.weibo.sdk.net.AsyncWeiboRunner;
+import com.sina.weibo.sdk.net.WeiboParameters;
 
 import org.json.JSONException;
 import org.json.JSONObject;
