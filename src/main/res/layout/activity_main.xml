@@ -15,5 +15,6 @@
     	android:background="@color/superlight_gray"
     	android:orientation="vertical" >
     	<include layout="@layout/main_account" />
+        <include layout="@layout/main_drawer" />
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
