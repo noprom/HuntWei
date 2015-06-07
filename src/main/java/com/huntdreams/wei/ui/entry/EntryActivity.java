@@ -1,40 +1,43 @@
 package com.huntdreams.wei.ui.entry;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.huntdreams.wei.R;
+import com.huntdreams.wei.api.BaseApi;
+import com.huntdreams.wei.cache.login.LoginApiCache;
+import com.huntdreams.wei.support.Utility;
+import com.huntdreams.wei.ui.login.LoginActivity;
 
-public class EntryActivity extends ActionBarActivity {
+/**
+ * 应用程序入口
+ *
+ * @author noprom (https://github.com/noprom)
+ * @version 1.0
+ * Created by noprom on 2015/6/7.
+ */
+public class EntryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entry);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_entry, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        LoginApiCache login = new LoginApiCache(this);
+        if(needsLogin(login)){
+            Intent i = new Intent();
+            i.setAction(Intent.ACTION_MAIN);
+            i.setClass(this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }else{
+            BaseApi.setmAccessToken(login.getAccessToken());
+            // TODO Enter the main time line.
         }
 
-        return super.onOptionsItemSelected(item);
     }
+
+    private boolean needsLogin(LoginApiCache login){
+        // TODO consider expire date
+        return login.getAccessToken() == null || Utility.isTokenExpired(login.getExpireDate());
+    }
+
 }
