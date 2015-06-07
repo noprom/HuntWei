@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.huntdreams.wei.cache.database.tables.UsersTable;
+
 /**
  * 自定义数据库帮助类
  *
@@ -23,11 +25,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(UsersTable.CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    // TODO Clean unavailable records
+
+    public static synchronized DataBaseHelper instance(Context context){
+        if(instance == null){
+            instance = new DataBaseHelper(context);
+        }
+        return instance;
     }
 }
