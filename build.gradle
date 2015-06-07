@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 21
+    buildToolsVersion "21.0.2"
 
     defaultConfig {
         applicationId "com.huntdreams.wei"
-        minSdkVersion 22
-        targetSdkVersion 22
+        minSdkVersion 21
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
@@ -26,4 +26,17 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'com.android.support:support-v13:21.0.+'
+    compile 'com.android.support:support-v4:21.0.+'
+    compile 'com.android.support:support-annotations:21.0.+'
+    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile 'com.android.support:cardview-v7:21.0.+'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.0.+'
+    compile 'com.google.code.gson:gson:2.3.+'
+    compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'com.larswerkman:HoloColorPicker:1.5'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.1.+'
+    compile project(':PersistentSearch')
+    compile project(':SlidingUpPanel')
 }
