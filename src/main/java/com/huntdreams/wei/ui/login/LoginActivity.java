@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.huntdreams.wei.R;
 import com.huntdreams.wei.api.BaseApi;
 import com.huntdreams.wei.cache.login.LoginApiCache;
 import com.huntdreams.wei.support.Utility;
+import com.huntdreams.wei.ui.main.MainActivity;
 
 import static com.huntdreams.wei.BuildConfig.DEBUG;
 /**
@@ -110,7 +112,6 @@ public class LoginActivity extends Activity {
             super.onPostExecute(result);
             mProgressDialog.dismiss();
 
-            // TODO Use userapi to see if the login is successful
             if(mLogin.getAccessToken() != null){
                 if(DEBUG){
                     Log.d(TAG, "Access Token:" + mLogin.getAccessToken());
@@ -129,7 +130,10 @@ public class LoginActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                // TODO Enter main timeline
+                                Intent i = new Intent();
+                                i.setAction(Intent.ACTION_MAIN);
+                                i.setClass(LoginActivity.this, MainActivity.class);
+                                startActivity(i);
                                 finish();
                             }
                         })

@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.huntdreams.wei.api.BaseApi;
+import com.huntdreams.wei.cache.file.FileCacheManager;
 import com.huntdreams.wei.cache.login.LoginApiCache;
 import com.huntdreams.wei.support.Utility;
 import com.huntdreams.wei.ui.login.LoginActivity;
+import com.huntdreams.wei.ui.main.MainActivity;
 
 /**
  * 应用程序入口
@@ -21,6 +22,10 @@ public class EntryActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Clean cache
+        FileCacheManager.instance(this).clearUnavailable();
+
         LoginApiCache login = new LoginApiCache(this);
         if(needsLogin(login)){
             Intent i = new Intent();
@@ -29,8 +34,11 @@ public class EntryActivity extends Activity {
             startActivity(i);
             finish();
         }else{
-            BaseApi.setmAccessToken(login.getAccessToken());
-            // TODO Enter the main time line.
+            Intent i = new Intent();
+            i.setAction(Intent.ACTION_MAIN);
+            i.setClass(this, MainActivity.class);
+            startActivity(i);
+            finish();
         }
 
     }
