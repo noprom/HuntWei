@@ -44,11 +44,12 @@ public class FileCacheManager {
        if(f.exists()){
            f.delete();
        }
+       f.getParentFile().mkdirs();
        f.createNewFile();
 
-        FileOutputStream out = new FileOutputStream(path);
-        out.write(data);
-        out.close();
+       FileOutputStream out = new FileOutputStream(path);
+       out.write(data);
+       out.close();
     }
 
     public byte[] createCacheFromNetwork(String type, String name, String url) throws IOException{
@@ -83,7 +84,7 @@ public class FileCacheManager {
     }
 
     public void clearUnavailable(){
-
+        clearUnavailable(mCacheDir);
     }
 
     private void clearUnavailable(File dir){
