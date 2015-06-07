@@ -12,8 +12,8 @@ import java.util.List;
  * Created by noprom on 2015/6/7.
  */
 public interface BaseListModel<ITEM, LIST> extends Parcelable {
-    public int total_number = 0;
-    public String previous_cursor = null, next_cursor = null;
+    public int total_number;
+    public String previous_cursor, next_cursor;
 
     public int getSize();
     public ITEM get(int position);
