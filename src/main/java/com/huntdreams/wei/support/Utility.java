@@ -28,4 +28,14 @@ public class Utility {
     public static boolean isTokenExpired(long time){
         return time <= System.currentTimeMillis();
     }
+
+    /**
+     * 检查缓存文件是否过期
+     * @param createtime
+     * @param availableDays
+     * @return
+     */
+    public static boolean isCacheAvailable(long createtime, int availableDays){
+        return System.currentTimeMillis() <= createtime + TimeUnit.DAYS.toMillis(availableDays);
+    }
 }
