@@ -131,6 +131,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             mLastChoice = tv;
             // TODO Switch fragments
         }
+        // Close
+        mDrawer.closeDrawer(Gravity.START);
     }
 
     private class InitializeTask extends AsyncTask<Void, Object, Void>{
