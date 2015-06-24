@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HuntWei</string>
+    <string name="title_activity_entry">EntryActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!-- Login -->
+    <string name="login">登录</string>
+    <string name="app_id">App Id</string>
+    <string name="app_secret">App Secret</string>
+    <string name="username">用户名</string>
+    <string name="passwd">密码</string>
+
+    <!-- Left Drawer -->
+    <string name="my">我的圈子</string>
+    <string name="at_me">提到我的</string>
+    <string-array name="my_array">
+    	<item>微博</item>
+    	<item>评论</item>
+    	<item>私信</item>
+    	<item>收藏</item>
+    </string-array>
+    <string-array name="at_me_array">
+    	<item>微博</item>
+    	<item>评论</item>
+    </string-array>
+    
+    <!-- Message -->
+    <string name="plz_wait">请稍候...</string>
+    <string name="name_fetching">昵称获取中...</string>
+    <string name="expires_in">本次登录授权将于 %d 天后失效</string>
+    <string name="login_fail">登录失败，可能是 AppId/AppSecret/用户名/密码 错误</string>
+    <string name="title_activity_main">MainActivity</string>
+
+</resources>
