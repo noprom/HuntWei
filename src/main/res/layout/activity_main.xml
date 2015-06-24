@@ -1,0 +1,20 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+    	android:id="@+id/container"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent" />
+    <LinearLayout
+    	android:layout_gravity="start"
+    	android:layout_width="240dp"
+    	android:layout_height="match_parent"
+    	android:background="@color/superlight_gray"
+    	android:orientation="vertical" >
+    	<include layout="@layout/main_account" />
+        <include layout="@layout/main_drawer" />
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
